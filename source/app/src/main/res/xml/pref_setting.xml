@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/menu_setting">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="hook_all_app"
+            android:title="@string/text_hook_all"
+            android:summary="@string/desc_hook_all"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="use_hardcoded_value"
+            android:title="@string/use_hardcoded_value" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="debug_mode"
+            android:title="@string/debug_mode" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

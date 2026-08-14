@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+
+def signingProperties = new Properties()
+def signingPropertiesFile = rootProject.file('keystore/public-signing.properties')
+if (signingPropertiesFile.exists()) {
+    signingPropertiesFile.withInputStream { signingProperties.load(it) }
+}
+
+android {
+    namespace 'com.bigsing.changer'
+    compileSdk 37
+    enableKotlin = false
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    defaultConfig {
+        applicationId 'com.bigsing.changer'
+        minSdk 17
+        targetSdk 37
+        versionCode 221
+        versionName '2.2.1'
+        testInstrumentationRunner 'android.test.InstrumentationTestRunner'
+    }
+
+    flavorDimensions += 'xposedApi'
+    productFlavors {
+        legacy {
+            dimension 'xposedApi'
+            minSdk 17
+            buildConfigField 'String', 'XPOSED_VARIANT', '"legacy"'
+        }
+        modern {
+            dimension 'xposedApi'
+            minSdk 26
+            buildConfigField 'String', 'XPOSED_VARIANT', '"modern"'
+        }
+    }
+
+    signingConfigs {
+        release {
+            if (signingPropertiesFile.exists()) {
+                storeFile rootProject.file(signingProperties.getProperty('storeFile'))
+                storePassword signingProperties.getProperty('storePassword')
+                keyAlias signingProperties.getProperty('keyAlias')
+                keyPassword signingProperties.getProperty('keyPassword')
+                enableV1Signing = true
+                enableV2Signing = true
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    lint {
+        abortOnError true
+        checkReleaseBuilds true
+        warningsAsErrors false
+        disable += ['ExpiredTargetSdkVersion']
+    }
+
+    sourceSets {
+        modern {
+            resources.srcDirs = ['src/modern/resources']
+        }
+    }
+
+    packaging {
+        resources {
+            merges += ['META-INF/xposed/*']
+        }
+    }
+
+}
+
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        def flavorName = variant.productFlavors.collect { it.second }.join('-')
+        variant.outputs.each { output ->
+            output.outputFileName.set(
+                    "AndroidIdChanger-${flavorName}-${variant.buildType}-${output.versionName.get()}.apk")
+        }
+    }
+}
+
+dependencies {
+    legacyCompileOnly 'de.robv.android.xposed:api:53'
+    modernCompileOnly 'io.github.libxposed:api:102.0.0'
+    modernImplementation 'io.github.libxposed:service:102.0.0'
+
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    testImplementation 'junit:junit:4.13.2'
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/White"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkbox_all"
+            android:buttonTint="@color/White"
+            android:textColor="@color/White"
+            android:layout_gravity="center_vertical"
+            android:layout_width="60dp"
+            android:text="@string/select_all"
+            android:layout_height="wrap_content" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        　　<RadioButton
+            android:id="@+id/bt_runningApps"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/running_apps"
+            android:button="@null"
+            android:textColor="@color/White"
+            android:checked="false"
+            android:drawableLeft="@drawable/selector_app"/>
+            <RadioButton
+                android:id="@+id/bt_installedApps"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/installed_apps"
+                android:button="@null"
+                android:textColor="@color/White"
+                android:checked="true"
+                android:drawableLeft="@drawable/selector_app"/>
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/checkbox_sysapp_included"
+            android:buttonTint="@color/White"
+            android:textColor="@color/White"
+            android:layout_width="60dp"
+            android:text="@string/include_system_apps"
+            android:checked="true"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View style="@style/splitter_whiteLine" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lv_apps"
+            android:fastScrollEnabled="false"
+            android:descendantFocusability="beforeDescendants"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_app"/>
+
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/loading" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

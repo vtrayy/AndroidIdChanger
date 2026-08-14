@@ -1,0 +1,25 @@
+# Android / Gradle
+.gradle/
+**/build/
+**/.cxx/
+**/.externalNativeBuild/
+local.properties
+captures/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS / temporary files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Local signing overrides (the repository's public development key is kept explicitly)
+keystore.properties.local
+*.jks
+*.keystore
+!source/keystore/androididchanger-public.jks

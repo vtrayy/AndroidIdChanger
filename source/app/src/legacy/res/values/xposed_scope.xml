@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 只提供保守的初始建议，最终作用域由用户在框架管理器中决定。 -->
+    <string-array name="xposed_scope">
+        <item>com.bigsing.changer</item>
+        <item>com.android.settings</item>
+    </string-array>
+</resources>

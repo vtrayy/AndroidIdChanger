@@ -1,0 +1,75 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <!--自定义菜单项文字颜色-->
+        <item name="actionMenuTextColor">@color/Black</item>
+        <item name="android:actionMenuTextColor">@color/Black</item>
+
+        <!--正常状态下字体颜色和icon颜色-->
+        <item name="android:textColorPrimary">@color/White</item>
+        <!--自定义AlertDialog-->
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert.Self</item>
+        <item name="android:buttonStyle">@style/ButtonColor</item>
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+    </style>
+
+    <style name="DefaultTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <!--自定义菜单项文字颜色-->
+        <item name="actionMenuTextColor">@color/Black</item>
+        <item name="android:actionMenuTextColor">@color/Black</item>
+
+        <item name="android:buttonStyle">@style/ButtonColor</item>
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ButtonColor" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/White</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.Dialog.Alert.Self" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <!--修改AlertDialog按钮的颜色http://www.jianshu.com/p/fb671e11e455-->
+        <item name="colorAccent">#3F51B5</item>
+    </style>
+
+    <style name="MyThemeGray" parent="Base.Theme.AppCompat.Dialog.Alert"></style>
+    <!---===================================================================-->
+
+    <style name="horizontal_linearlayout">
+        <!--该样式用于水平布局-->
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="grayTextView">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="blackEditText">
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/value_text_original</item>
+        <item name="android:textColorHint">@color/value_text_unchanged</item>
+    </style>
+
+    <style name="splitter_whiteLine">
+        <!--该样式用于分割条-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/White</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+</resources>
